@@ -11,10 +11,10 @@ export default async function Home({ searchParams }: HomeProps) {
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
     fuel: searchParams.fuel || "",
-    limit: searchParams.limit || 10,
     model: searchParams.model || "",
   });
 
+  console.log('allCars', allCars)
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
@@ -43,11 +43,11 @@ export default async function Home({ searchParams }: HomeProps) {
                 <CarCard car={car} />
               ))}
             </div>
-
+{/* 
             <ShowMore
-              pageNumber={(searchParams.limit || 10) / 10}
-              isNext={(searchParams.limit || 10) > allCars.length} // if the limit is greater than the total number of cars, then isNext is true. (manual logic finding the next page)
-            />
+              pageNumber={(searchParams?.limit || 10) / 10}
+              isNext={(searchParams?.limit || 10) > allCars.length} // if the limit is greater than the total number of cars, then isNext is true. (manual logic finding the next page)
+            /> */}
           </section>
         ) : (
           <div className='home__error-container'>
